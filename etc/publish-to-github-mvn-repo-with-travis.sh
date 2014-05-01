@@ -17,6 +17,6 @@ if ! grep -Fq SNAPSHOT gradle.properties && [[ "$TRAVIS_BRANCH" =~ [0-9]+\.[0-9]
   cd travis-test-mvn-repo
   cp -R $HOME/repo .
   git add .
-  git commit -m 'release'
+  git commit -m "release $TRAVIS_BRANCH"
   git push -fq origin master > /dev/null  
 fi
