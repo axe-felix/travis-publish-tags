@@ -1,7 +1,19 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'release'
 
 group = 'org.gradle.sample'
+
+buildscript {
+   repositories {
+      mavenCentral()
+      maven { url "https://oss.sonatype.org/content/groups/public"}
+   }
+   dependencies {
+      classpath 'com.github.townsfolk:gradle-release:1.2'
+   }
+}
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
