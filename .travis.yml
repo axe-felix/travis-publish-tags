@@ -1,0 +1,18 @@
+language: java
+env: 
+  matrix:
+    - TERM=dumb
+  global:
+    secure: bYUnjD/ccs87IVOxaqU0P4TsQzhBsYa3Woqpr3wMkwtNRIJquG9Cjl5EXfUDexZOJQFdg9k5BKUzRe6PF+PNzy2yunT/zzMGmTrvmgOWfvLqsA26QP+dxuPCAX0ftZQmeZuycCL+w4Jy4r2zKVrh3fktfGbVDDS/fovfe9Fhrg4=
+after_success:
+  - gradle publish
+  - cp -R build/repo $HOME/repo
+  - cd $HOME
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "travis-ci"
+  - git clone --quiet https://${GH_TOKEN}@github.com/axe-felix/travis-test-mvn-repo > /dev/null
+  - cd travis-test-mvn-repo
+  - cp -R $HOME/repo .
+  - git add .
+  - git commit -m 'release'
+  - git push
