@@ -16,6 +16,13 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 artifacts {
 	archives sourcesJar
 }
+
+release {
+	preTagCommitMessage = 'release '
+	tagCommitMessage = 'release '
+	newVersionCommitMessage = 'next development version '
+}
+
 publishing {
 	publications {
 		maven(MavenPublication) {
