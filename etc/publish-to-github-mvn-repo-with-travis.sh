@@ -1,9 +1,8 @@
 #!/bin/bash
 
-echo "grep -F SNAPSHOT gradle.properties"
-echo grep -F SNAPSHOT gradle.properties
-echo "TRAVIS_REPO_SLUG $TRAVIS_REPO_SLUG" 
-echo "TRAVIS_PULL_REQUEST $TRAVIS_PULL_REQUEST"
+echo grep -F SNAPSHOT gradle.properties: `grep -F SNAPSHOT gradle.properties` 
+echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG" 
+echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 
 if ! grep -Fq SNAPSHOT gradle.properties && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gradle publish  
