@@ -26,5 +26,3 @@ publishing {
         }
 	}
 }
-
-publish.onlyIf { !version.contains('SNAPSHOT') }
