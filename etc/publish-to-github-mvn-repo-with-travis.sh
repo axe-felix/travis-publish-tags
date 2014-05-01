@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! grep -Fq SNAPSHOT gradle.properties ] && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [ ! [ grep -Fq SNAPSHOT gradle.properties ] ] && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gradle publish  
   cp -R build/repo $HOME/repo
   cd $HOME
