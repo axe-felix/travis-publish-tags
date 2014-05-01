@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo grep -F SNAPSHOT gradle.properties: `grep -F SNAPSHOT gradle.properties` 
+echo `grep -F version gradle.properties` 
 echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG" 
 echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
 
-if ! grep -Fq SNAPSHOT gradle.properties && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [[ $TRAVIS_BRANCH =~ ^\d+\.\d+\.\d+ ]] && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gradle publish  
   cp -R build/repo $HOME/repo
   cd $HOME
