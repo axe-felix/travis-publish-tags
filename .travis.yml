@@ -5,14 +5,4 @@ env:
   global:
     secure: K/xsPCEfqR0u9kyVL34KJLJSZWpXrqwFtT9fHvIEC8Qv4Rt3jj2lsAxly9Dp6XM7ZWJwwwkJXY21+szOfE9fG1XR4LerYur4z/QJFaYRYFMjkNeR5IW45df9DedTK68wJRzLvJ33KMi9pr6JXJSuCyv+Z8Np9sxw8Lrkjw1ZPJA=
 after_success:
-  - gradle publish
-  - cp -R build/repo $HOME/repo
-  - cd $HOME
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "travis-ci"
-  - git clone --quiet https://${GH_TOKEN}@github.com/axe-felix/travis-test-mvn-repo > /dev/null
-  - cd travis-test-mvn-repo
-  - cp -R $HOME/repo .
-  - git add .
-  - git commit -m 'release'
-  - git push origin master > /dev/null
+  - etc/publish-to-github-mvn-repo-with-travis.sh

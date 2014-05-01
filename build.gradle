@@ -2,7 +2,6 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 group = 'org.gradle.sample'
-version = '1.0'
 
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
@@ -27,3 +26,5 @@ publishing {
         }
 	}
 }
+
+publish.onlyIf { !version.contains('SNAPSHOT') }
