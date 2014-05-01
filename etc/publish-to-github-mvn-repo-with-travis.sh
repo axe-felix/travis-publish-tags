@@ -3,6 +3,7 @@
 echo grep -F SNAPSHOT gradle.properties: `grep -F SNAPSHOT gradle.properties` 
 echo "TRAVIS_REPO_SLUG: $TRAVIS_REPO_SLUG" 
 echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
+echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
 
 if ! grep -Fq SNAPSHOT gradle.properties && [ "$TRAVIS_REPO_SLUG" == "axe-felix/travis-publish-tags" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   gradle publish  
@@ -15,5 +16,5 @@ if ! grep -Fq SNAPSHOT gradle.properties && [ "$TRAVIS_REPO_SLUG" == "axe-felix/
   cp -R $HOME/repo .
   git add .
   git commit -m 'release'
-  git push origin master > /dev/null  
+  git push -fq origin master > /dev/null  
 fi

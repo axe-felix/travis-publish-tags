@@ -3,7 +3,7 @@ env:
   matrix:
   - TERM=dumb
   global:
-    secure: K/xsPCEfqR0u9kyVL34KJLJSZWpXrqwFtT9fHvIEC8Qv4Rt3jj2lsAxly9Dp6XM7ZWJwwwkJXY21+szOfE9fG1XR4LerYur4z/QJFaYRYFMjkNeR5IW45df9DedTK68wJRzLvJ33KMi9pr6JXJSuCyv+Z8Np9sxw8Lrkjw1ZPJA=
+    secure: Boxq9DDeiYzpk5lAT/aGU/ScyO62aeRD7yus7PeOm0Z8COe1JLbqabqjLfZdjP65VlyE3Y2cx95WsTnOtE53DCT5+PCBD3hcFHKrRFHY0LZoBC17tu4/6xKFc8yBKSDXM5ymE89Da2zeq7OFdSwC7D2WlKMuo5IVUETqERvKUy8="
 before_install:
  - chmod +x gradlew
 after_success:
